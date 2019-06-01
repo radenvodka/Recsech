@@ -2,7 +2,6 @@
 
 <a href="https://github.com/radenvodka/Recsech/releases/latest"><img alt="undefined" src="https://img.shields.io/github/release/radenvodka/Recsech.svg"></a>
 <a href="https://github.com/radenvodka" target="_blank"><img alt="undefined" src="https://img.shields.io/github/last-commit/radenvodka/Recsech.svg"></a>
-<a href="https://github.com/radenvodka/Recsech/releases" target="_blank"><img alt="undefined" src="https://img.shields.io/github/downloads/radenvodka/Recsech/total.svg"></a>
 
 
 
