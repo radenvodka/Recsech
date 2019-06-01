@@ -4,7 +4,7 @@ error_reporting(0);
  * @Author: Eka Syahwan
  * @Date:   2017-11-06 22:54:36
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-01 12:40:23
+ * @Last Modified time: 2019-06-01 20:38:22
  */
 class Sdata
 {
@@ -76,7 +76,11 @@ class Sdata
 			if($custom[$i]['gzip']){
 				curl_setopt($ch[$i], CURLOPT_ENCODING , "gzip");
 			}
-		    curl_setopt($ch[$i], CURLOPT_HEADER, false);
+			if($custom[$i]['falsehead']){
+		    	curl_setopt($ch[$i], CURLOPT_HEADER, false);
+			}else{
+				curl_setopt($ch[$i], CURLOPT_HEADER, true);
+			}
 		    curl_setopt($ch[$i], CURLOPT_COOKIEJAR,  $cookies);
       		curl_setopt($ch[$i], CURLOPT_COOKIEFILE, $cookies);
 		    if($custom[$i]['rto']){
@@ -112,7 +116,7 @@ class Sdata
         	if($custom[$i]['uagent']){
 		    	curl_setopt($ch[$i], CURLOPT_USERAGENT, $custom[$i]['uagent']);
 		    }else{
-				curl_setopt($ch[$i], CURLOPT_USERAGENT, "Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) CriOS/42.0.2311.47 Mobile/12F70 Safari/600.1.4");
+				curl_setopt($ch[$i], CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
 		    }
 	    	curl_multi_add_handle($mh, $ch[$i]);
 		}
@@ -128,6 +132,7 @@ class Sdata
 		       		'id' 		=> $threads_data['proses_id'],
 		       		'data' 		=> $threads_data, 
 		       		'respons' 	=> $result,
+		       		'headers' 	=> $headers,
 		       		'info' 		=> array(
 		       			'url' 		=> $info['url'],
 		       			'http_code' => $info['http_code'], 
