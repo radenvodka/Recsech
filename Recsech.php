@@ -5,18 +5,22 @@ require_once("tools/Honeyscore.php");
 require_once("tools/DomainTakeOver.php");
 require_once("tools/TechDetected.php");
 require_once("tools/EmailFinder.php");
+require_once("tools/HTTPHeaders.php");
+require_once("tools/Update.php");
 /**
  * @Author: Eka Syahwan
  * @Date:   2017-12-11 17:01:26
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-01 13:12:15
+ * @Last Modified time: 2019-06-01 20:52:25
 */
+
+
 $sdata = new Sdata;
 
 echo "\n\n ╦═╗┌─┐┌─┐┌─┐┌─┐┌─┐┬ ┬ \r\n";
 echo " ╠╦╝├┤ │  └─┐├┤ │  ├─┤ \r\n";
 echo " ╩╚═└─┘└─┘└─┘└─┘└─┘┴ ┴ \r\n";
-echo " Recsech - Recon And Research (BETA) \r\n\n";
+echo " Recsech - Recon And Research (V.1.2) \r\n\n";
 
 if(empty($argv[1])){
 	die(' use command : '.$argv[0]." domain.com\r\n");
@@ -57,9 +61,14 @@ function secondsToTime($seconds) {
 }
  
 echo color("grey","[i] Start scanning at ".date("d/m/Y h:i:m")."\r\n");
- 
+echo color("purple","[i] Collect domain information : ".$argv[1]."\r\n");
+
+$Recsech = new Recsech;
+$Recsech->Update();
+
+
 $Cert 		= new Cert($argv[1]);
-$DomainList = $Cert->check();
+$DomainList = $Cert->check(); $DomainList = array_unique($DomainList);
 
 $hit = 1;
 foreach ($DomainList as $key => $domain) {
@@ -67,14 +76,35 @@ foreach ($DomainList as $key => $domain) {
 	$hit++;
 }
 
-echo color("yellow","[+] Domain Email @".$argv[1]." : \r\n");
+$HTTPHeaders = new HTTPHeaders;
 
-$EmailFinder = new EmailFinder;
-$getMAil  	 = $EmailFinder->Domain($argv[1]);
+echo color("yellow","[+] HTTP Headers for Securing : \r\n");
 $hit = 1;
-foreach ($getMAil as $keys => $email) {
-	echo "    + ".color("green",$email)." \r\n"; 
+
+foreach ($DomainList as $key => $domains) {
+	$HTTPS 	= $HTTPHeaders->Domain($domains);
+	echo "    Domain : ".color("nevy",$domains)." \r\n";
+	foreach ($HTTPS as $key => $value) {
+		if($value['header']){
+			echo "           + ".color("green","[".$value['httpcode']."] ".$value['name'])." \r\n";
+		}else{
+			echo "           + ".color("red","[".$value['httpcode']."] ".$value['name'])." \r\n";
+		}
+		if($value['httpcode'] == 0){
+			$DomainInactive[] = $domains;
+		}
+	}
+	$hit++;
+} 
+
+echo color("yellow","[+] Inactive Domain : \r\n");
+$hit = 1;
+$DomainInactive = array_unique($DomainInactive);
+foreach ($DomainInactive as $key => $domains) {
+	echo "    + ".color("red",$domains)."\r\n";
+	$hit++;
 }
+
 
 $Honeyscore = new Honeyscore;
 
@@ -86,6 +116,17 @@ foreach ($DomainList as $key => $domains) {
 	echo "    + ".color("nevy",$Honey[ip])." ".color("green",$Honey[domain])." ".$Honey[score]."\r\n";
 	$hit++;
 }
+
+
+echo color("yellow","[+] Domain Email @".$argv[1]." : \r\n");
+
+$EmailFinder = new EmailFinder;
+$getMAil  	 = $EmailFinder->Domain($argv[1]);
+$hit = 1;
+foreach ($getMAil as $keys => $email) {
+	echo "    + ".color("green",$email)." \r\n"; 
+}
+
 
 $DomainTakeOver = new DomainTakeOver;
 
