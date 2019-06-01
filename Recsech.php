@@ -4,7 +4,7 @@ require_once("sdata-modules.php");
  * @Author: Eka Syahwan
  * @Date:   2017-12-11 17:01:26
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-01 07:36:16
+ * @Last Modified time: 2019-06-01 07:46:18
 */
 
 echo "\n\n ╦═╗┌─┐┌─┐┌─┐┌─┐┌─┐┬ ┬ \r\n";
@@ -54,7 +54,7 @@ function useProxy($sdata){
 
 $proxy = useProxy($sdata); // use proxy
 
-echo color("yellow","[+] Whois Domain : ".$argv[1])."\r\n";
+echo color("yellow","[+] Whois Domain : ").color("nevy",$argv[1])."\r\n";
 
 if($proxy['ip']){
 	$url[] = array(
@@ -81,18 +81,22 @@ $Whois = '
 	echo $Whois."\r\n\n";	
 }
 
-echo color("yellow","[+] Search for all emails by domain : ")."\r\n";
+/*echo color("yellow","[+] Search for all emails by domain : ")."\r\n";
 $url[] = array(
 	'url' => 'https://api.hunter.io/v2/domain-search?domain='.$argv[1].'&api_key=61150cc37813ef999eba7556f301b88e98b12061', 
 );
-$result = $sdata->sdata($url);
+$result = $sdata->sdata($url);unset($url);unset($head);
 foreach ($result as $key => $respons) {
 	$json = json_decode($respons['respons'],true);
-	foreach ($json['data']['emails'] as $key => $email) {
-		echo "    [".($key+1)."/".count($json['data']['emails'])."] ".color("green",$email['value'])."\r\n";
-		$data['email'][] = $email;
+	if($json['data']['emails']){
+		foreach ($json['data']['emails'] as $key => $email) {
+			echo "    [".($key+1)."/".count($json['data']['emails'])."] ".color("green",$email['value'])."\r\n";
+			$data['email'][] = $email;
+		}
+	}else{
+		echo "    ".color("red",'Email not found.')."\r\n";
 	}
-}
+}*/
 
 echo color("yellow","[+] Search for all (sub) domains : ")."\r\n";
 
@@ -100,8 +104,10 @@ $url[] = array(
 	'url' => 'https://findsubdomains.com/subdomains-of/'.$argv[1], 
 );
 $result = $sdata->sdata($url);unset($url);
+
 foreach ($result as $key => $respons) {
 	preg_match_all('/<a href="javascript:void\(0\);" class="desktop-hidden">(.*?)<\/a>/m', $respons['respons'], $matches);
+	$matches[1][] = $argv[1];
 	foreach ($matches[1] as $key => $domain) {
 		if($domain != '{{:domain}}'){
 			echo "    [".($key+1)."/".count($matches[1])."] ".color("green",$domain)."\r\n";
@@ -140,7 +146,7 @@ $Dnslookup = '
 	}
 }
 
-echo color("yellow","[+] Get domain information : ");
+echo color("yellow","\n[+] Get domain information : ");
 
 foreach ($data['domain'] as $key => $domain) {
 	$url[] = array(
