@@ -9,10 +9,7 @@
 <a href="https://github.com/radenvodka/Recsech/releases" target="_blank"><img alt="undefined" src="https://badgen.net/badge//Windows/blue?icon=windows"></a>
 <a href="https://github.com/radenvodka/Recsech/releases" target="_blank"><img alt="undefined" src="https://badgen.net/badge//Linux64/orange?icon=terminal"></a>
 
-
-<a href="https://github.com/radenvodka" target="_blank"><img alt="undefined" src="https://img.shields.io/github/followers/radenvodka.svg?label=Follow&style=social"></a>
-
-
+ 
 ![Recsech](https://github.com/radenvodka/Recsech/raw/master/Recsech.PNG)
 
 ## Features in tools
@@ -39,7 +36,12 @@
 
 ## Thanks
 
-Thank you for all. If you have additional information, you can make it on the [issue page](https://github.com/radenvodka/Recsech/issues).
+Thank you for all.  How to support ?
+
+1. Can go through <a href="https://github.com/radenvodka" target="_blank"><img alt="undefined" src="https://img.shields.io/github/followers/radenvodka.svg?label=Follow&style=social"></a> 
+2. Publish or review on your blog. 
+
+If you have additional information, you can make it on the [issue page](https://github.com/radenvodka/Recsech/issues).
 
 ## Disclaimer
 
