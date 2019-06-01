@@ -4,7 +4,7 @@ require_once("sdata-modules.php");
  * @Author: Eka Syahwan
  * @Date:   2017-12-11 17:01:26
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-01 07:46:18
+ * @Last Modified time: 2019-06-01 07:48:14
 */
 
 echo "\n\n ╦═╗┌─┐┌─┐┌─┐┌─┐┌─┐┬ ┬ \r\n";
@@ -81,7 +81,7 @@ $Whois = '
 	echo $Whois."\r\n\n";	
 }
 
-/*echo color("yellow","[+] Search for all emails by domain : ")."\r\n";
+echo color("yellow","[+] Search for all emails by domain : ")."\r\n";
 $url[] = array(
 	'url' => 'https://api.hunter.io/v2/domain-search?domain='.$argv[1].'&api_key=61150cc37813ef999eba7556f301b88e98b12061', 
 );
@@ -96,7 +96,7 @@ foreach ($result as $key => $respons) {
 	}else{
 		echo "    ".color("red",'Email not found.')."\r\n";
 	}
-}*/
+}
 
 echo color("yellow","[+] Search for all (sub) domains : ")."\r\n";
 
