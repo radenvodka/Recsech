@@ -24,7 +24,7 @@
 | Crlf injection   | :x: |
 | Header Security   | :x: |
 | Port Scanner   | :x: |
-| Port Scanner   | :x: |
+| Wordpress audit   | :x: |
 
 ## Equirements for using this tool
 
