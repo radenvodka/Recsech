@@ -34,6 +34,21 @@
 | PHP 7.X | 
 | PHP CURL|
 
+Usage
+----
+
+Enough to execute the command :
+
+    php Recsech.php example.com
+
+
+Links
+----
+
+* Project By : http://ekasyahwan.com
+* Download: [.tar.gz](https://github.com/radenvodka/Recsech/tarball/master) or [.zip](https://github.com/radenvodka/Recsech/zipball/master)
+* Issue tracker: https://github.com/radenvodka/Recsech/issues
+
 ## Thanks
 
 Thank you for all.  How to support ?
