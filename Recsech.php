@@ -4,7 +4,7 @@ require_once("sdata-modules.php");
  * @Author: Eka Syahwan
  * @Date:   2017-12-11 17:01:26
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-01 07:30:43
+ * @Last Modified time: 2019-06-01 07:36:16
 */
 
 echo "\n\n ╦═╗┌─┐┌─┐┌─┐┌─┐┌─┐┬ ┬ \r\n";
@@ -40,7 +40,7 @@ function useProxy($sdata){
 		);
 		$head[] = array(
 			'rto' => 5,
-			'proxy' => $proxy, 
+			'proxy' => $value, 
 		);
 		$result = $sdata->sdata($url,$head);unset($url);unset($head);
 		if($result[0]['info']['http_code'] == 200 && preg_match("/Domain Name/", $result[0]['respons'])){
