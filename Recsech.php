@@ -1,11 +1,17 @@
 <?php
-require_once("sdata-modules.php");
+require_once("tools/sdata-modules.php");
+require_once("tools/crt.php");
+require_once("tools/Honeyscore.php");
+require_once("tools/DomainTakeOver.php");
+require_once("tools/TechDetected.php");
+require_once("tools/EmailFinder.php");
 /**
  * @Author: Eka Syahwan
  * @Date:   2017-12-11 17:01:26
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-01 07:48:14
+ * @Last Modified time: 2019-06-01 13:12:15
 */
+$sdata = new Sdata;
 
 echo "\n\n ╦═╗┌─┐┌─┐┌─┐┌─┐┌─┐┬ ┬ \r\n";
 echo " ╠╦╝├┤ │  └─┐├┤ │  ├─┤ \r\n";
@@ -13,7 +19,7 @@ echo " ╩╚═└─┘└─┘└─┘└─┘└─┘┴ ┴ \r\n";
 echo " Recsech - Recon And Research (BETA) \r\n\n";
 
 if(empty($argv[1])){
-	die('use command : '.$argv[0]." domain.com\r\n");
+	die(' use command : '.$argv[0]." domain.com\r\n");
 }
 
 function color($color = "default" , $text){
@@ -29,158 +35,81 @@ function color($color = "default" , $text){
 	);	
 	return "\033[".$arrayColor[$color]."m".$text."\033[0m";
 }
-
-function useProxy($sdata){
-	echo color("yellow","[+] Looking for a proxy ... ");
-	$proxy = $sdata->proxy();
-	shuffle($proxy);
-	foreach ($proxy as $key => $value) {
-		$url[] = array(
-			'url' => 'http://api.hackertarget.com/whois/?q=ekasyahwan.com', 
-		);
-		$head[] = array(
-			'rto' => 5,
-			'proxy' => $value, 
-		);
-		$result = $sdata->sdata($url,$head);unset($url);unset($head);
-		if($result[0]['info']['http_code'] == 200 && preg_match("/Domain Name/", $result[0]['respons'])){
-			$proxys = $value;
-			break;
-		}
-	}
-	echo color("green","Done!\r\n");
-	return $proxys;
+function stuck($msg){
+    echo color("purple",$msg);
+    $answer =  rtrim( fgets( STDIN ));
+    return $answer;
 }
 
-$proxy = useProxy($sdata); // use proxy
+$time_start = microtime(true); 
+function secondsToTime($seconds) {
+  $hours = floor($seconds / (60 * 60));
+  $divisor_for_minutes = $seconds % (60 * 60);
+  $minutes = floor($divisor_for_minutes / 60);
+  $divisor_for_seconds = $divisor_for_minutes % 60;
+  $seconds = ceil($divisor_for_seconds);
+  $obj = array(
+      "h" => (int) $hours,
+      "m" => (int) $minutes,
+      "s" => (int) $seconds,
+   );
+  return $obj;
+}
+ 
+echo color("grey","[i] Start scanning at ".date("d/m/Y h:i:m")."\r\n");
+ 
+$Cert 		= new Cert($argv[1]);
+$DomainList = $Cert->check();
 
-echo color("yellow","[+] Whois Domain : ").color("nevy",$argv[1])."\r\n";
-
-if($proxy['ip']){
-	$url[] = array(
-		'url' => 'http://api.hackertarget.com/whois/?q='.$argv[1], 
-	);
-	$head[] = array(
-		'proxy' => $proxy, 
-	);
-	$result = $sdata->sdata($url,$head);unset($url);unset($head);
-}else{
-	$url[] = array(
-		'url' => 'http://api.hackertarget.com/whois/?q='.$argv[1], 
-	);
-	$result = $sdata->sdata($url);unset($url);
+$hit = 1;
+foreach ($DomainList as $key => $domain) {
+	echo "    [".($hit)."/".count($DomainList)."] ".color("green",$domain)."\r\n";
+	$hit++;
 }
 
-foreach ($result as $key => $respons) {
-$Whois = '
-    Domain    : '.$argv[1].'
-    Whois     : 
+echo color("yellow","[+] Domain Email @".$argv[1]." : \r\n");
 
-    '.color("nevy",$respons[respons]);
-	    
-	echo $Whois."\r\n\n";	
+$EmailFinder = new EmailFinder;
+$getMAil  	 = $EmailFinder->Domain($argv[1]);
+$hit = 1;
+foreach ($getMAil as $keys => $email) {
+	echo "    + ".color("green",$email)." \r\n"; 
 }
 
-echo color("yellow","[+] Search for all emails by domain : ")."\r\n";
-$url[] = array(
-	'url' => 'https://api.hunter.io/v2/domain-search?domain='.$argv[1].'&api_key=61150cc37813ef999eba7556f301b88e98b12061', 
-);
-$result = $sdata->sdata($url);unset($url);unset($head);
-foreach ($result as $key => $respons) {
-	$json = json_decode($respons['respons'],true);
-	if($json['data']['emails']){
-		foreach ($json['data']['emails'] as $key => $email) {
-			echo "    [".($key+1)."/".count($json['data']['emails'])."] ".color("green",$email['value'])."\r\n";
-			$data['email'][] = $email;
-		}
-	}else{
-		echo "    ".color("red",'Email not found.')."\r\n";
+$Honeyscore = new Honeyscore;
+
+echo color("yellow","[+] Check Honeypot on all domains : \r\n");
+$hit = 1;
+
+foreach ($DomainList as $key => $domains) {
+	$Honey = $Honeyscore->Domain($domains);
+	echo "    + ".color("nevy",$Honey[ip])." ".color("green",$Honey[domain])." ".$Honey[score]."\r\n";
+	$hit++;
+}
+
+$DomainTakeOver = new DomainTakeOver;
+
+echo color("yellow","[+] Check Subdomain takeover : \r\n");
+$hit = 1;
+foreach ($DomainList as $keys => $domains) {
+	$DomainTakeOvers = $DomainTakeOver->Domain($domains);
+	foreach ($DomainTakeOvers as $key => $notice) {
+		echo "    + ".color("green",$notice[domain])." ".$notice[status]."\r\n"; 
+		$hit++;
 	}
 }
 
-echo color("yellow","[+] Search for all (sub) domains : ")."\r\n";
-
-$url[] = array(
-	'url' => 'https://findsubdomains.com/subdomains-of/'.$argv[1], 
-);
-$result = $sdata->sdata($url);unset($url);
-
-foreach ($result as $key => $respons) {
-	preg_match_all('/<a href="javascript:void\(0\);" class="desktop-hidden">(.*?)<\/a>/m', $respons['respons'], $matches);
-	$matches[1][] = $argv[1];
-	foreach ($matches[1] as $key => $domain) {
-		if($domain != '{{:domain}}'){
-			echo "    [".($key+1)."/".count($matches[1])."] ".color("green",$domain)."\r\n";
-			$data['domain'][] = $domain;
-		}
-	}
-}
-echo color("yellow","[+] Search for all Dnslookup : ")."\r\n";
-foreach ($data['domain'] as $key => $domain) {
-
-	if($proxy['ip']){
-		$url[] = array(
-			'url' => 'http://api.hackertarget.com/dnslookup/?q='.$domain, 
-			'note' => $domain,
-		);
-		$head[] = array(
-			'proxy' => $proxy, 
-		);
-		$result = $sdata->sdata($url,$head);unset($url);unset($head);
-	}else{
-		$url[] = array(
-			'url' => 'http://api.hackertarget.com/dnslookup/?q='.$domain, 
-			'note' => $domain,
-		);
-		$result = $sdata->sdata($url);unset($url);
-	}
-
-	foreach ($result as $key => $respons) {
-$Dnslookup = '
-    Domain    : '.color("green",$respons[data]['note']).'
-    Dnslookup : 
-
-    '.color("nevy",$respons[respons]);
-	    
-	echo $Dnslookup;
+$TechDetected = new TechDetected;
+echo color("yellow","[+] Check Technologies : \r\n");
+$hit = 1;
+foreach ($DomainList as $keys => $domains) {
+	echo "    [".($keys+1)."/".count($DomainList)."] ".color("green",$domains)." \r\n"; 
+	$TechDetecteds = $TechDetected->Domain($domains);
+	
+	foreach ($TechDetecteds as $key => $value) {
+		echo "      + ".color("green",$value['name'])." \r\n"; 
 	}
 }
 
-echo color("yellow","\n[+] Get domain information : ");
-
-foreach ($data['domain'] as $key => $domain) {
-	$url[] = array(
-		'url' => 'http://ip-api.com/json/'.$domain, 
-		'note' => $domain,
-	);
-}
-$result = $sdata->sdata($url);unset($url);
-echo color("green","Done!\r\n");
-foreach ($result as $key => $respons) {
-	$json = json_decode($respons['respons'],true);	
-	$datatemp[] 	= array('url' => 'https://api.shodan.io/labs/honeyscore/'.$json['query'].'?key=z3cBefrV3bmRx2rNZ0E1opuZxXNPrbIR' , 'note' => array(
-		'domain' => $respons[data][note],
-		'ipinfo' => $json,
-	));
-}
-foreach ($datatemp as $key => $value) {
-	$url[] = array(
-		'url' => $value['url'], 
-	);
-	$result = $sdata->sdata($url);unset($url);
-	foreach ($result as $key => $datane) {
-		if($datane['respons'] == 0){
-			$honeypot = color("red",'Not a honeypot');
-		}else if($datane['respons'] == '1.0'){
-			$honeypot = color("green",'is a honeypot');
-		}else{
-			$honeypot = color("yellow",'Possible honeypot');
-		}
-	}
-	$DomainInfo = '
-    Domain    : '.color("green",$value['note']['domain']).'
-    IP        : '.color("green",$value['note']['ipinfo']['query']." (".$value['note']['ipinfo']['isp'].")").'
-    HoneySpot : '.$honeypot.' 
-	';
-	echo $DomainInfo;
-}
+$checkMe  = secondsToTime(ceil((microtime(true) - $time_start)));
+echo color("grey","\n\n[i] Scanning is complete in ".$checkMe['h']." hour ".$checkMe['m']." minutes ".$checkMe['s']." seconds\r\n");
