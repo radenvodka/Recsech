@@ -13,18 +13,18 @@
 
 ## Features in tools
 
-| Name | Release          |
-| ------- | ------------------ |
-| Auto request with Proxy   | :white_check_mark: |
-| Find Email   | :white_check_mark:                |
-| HoneySpot Detected   | :white_check_mark:                |
-| Subdomain takeover   | :white_check_mark:                |
-| Check Technologies   | :white_check_mark:                |
-| Whois   | :x: |
-| Crlf injection   | :x: |
-| Header Security   | :x: |
-| Port Scanner   | :x: |
-| Wordpress audit   | :x: |
+| Name    | Release            | Release Date       |
+| ------- | ------------------ | ------------------ |
+| Auto request with Proxy   | :white_check_mark:   | 01/01/19 |
+| Find Email   | :white_check_mark:                | 01/01/19 |
+| HoneySpot Detected   | :white_check_mark:        | 01/01/19 |
+| Subdomain takeover   | :white_check_mark:        | 01/01/19 |
+| Check Technologies   | :white_check_mark:        | 01/01/19 |
+| Whois                | :x: | N/A |
+| Crlf injection       | :x: | N/A |
+| Header Security      | :x: | N/A |
+| Port Scanner         | :x: | N/A |
+| Wordpress audit      | :x: | N/A |
 
 ## Equirements for using this tool
 
