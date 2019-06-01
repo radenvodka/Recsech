@@ -4,7 +4,7 @@ require_once("sdata-modules.php");
  * @Author: Nokia 1337
  * @Date:   2019-06-01 09:58:00
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-01 12:43:00
+ * @Last Modified time: 2019-06-01 21:16:08
 */
 class TechDetected
 {
@@ -18,11 +18,12 @@ class TechDetected
 		while (TRUE) {
 			if($this->proxy){
 				$url[] 		= array('url' => 'https://api.wappalyzer.com/lookup-basic/beta/?url=https://'.$Domain,'note' => $Domain);
-				$head[]     = array('proxy' => $this->proxy );
+				$head[]     = array('proxy' => $this->proxy , 'falsehead' => true,);
 				$respons 	= $this->sdata->sdata($url,$head);unset($url);unset($head);
 			}else{
 				$url[] 		= array('url' => 'https://api.wappalyzer.com/lookup-basic/beta/?url=https://'.$Domain,'note' => $Domain);
-				$respons 	= $this->sdata->sdata($url);unset($url);unset($head);
+				$head[]     = array('falsehead' => true);
+				$respons 	= $this->sdata->sdata($url , $head);unset($url);unset($head);
 			}
 			foreach ($respons as $key => $value) {
 				$json = json_decode($value[respons],true);

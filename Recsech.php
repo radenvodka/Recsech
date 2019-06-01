@@ -1,4 +1,10 @@
 <?php
+/**
+ * @Author: Eka Syahwan
+ * @Date:   2017-12-11 17:01:26
+ * @Last Modified by:   Nokia 1337
+ * @Last Modified time: 2019-06-01 21:16:54
+*/
 require_once("tools/sdata-modules.php");
 require_once("tools/crt.php");
 require_once("tools/Honeyscore.php");
@@ -7,13 +13,6 @@ require_once("tools/TechDetected.php");
 require_once("tools/EmailFinder.php");
 require_once("tools/HTTPHeaders.php");
 require_once("tools/Update.php");
-/**
- * @Author: Eka Syahwan
- * @Date:   2017-12-11 17:01:26
- * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-01 20:52:25
-*/
-
 
 $sdata = new Sdata;
 
@@ -144,12 +143,14 @@ $TechDetected = new TechDetected;
 echo color("yellow","[+] Check Technologies : \r\n");
 $hit = 1;
 foreach ($DomainList as $keys => $domains) {
-	echo "    [".($keys+1)."/".count($DomainList)."] ".color("green",$domains)." \r\n"; 
+	echo "    [".($hit)."/".count($DomainList)."] ".color("green",$domains)." \r\n"; 
 	$TechDetecteds = $TechDetected->Domain($domains);
 	
 	foreach ($TechDetecteds as $key => $value) {
 		echo "      + ".color("green",$value['name'])." \r\n"; 
 	}
+	
+	$hit++;
 }
 
 $checkMe  = secondsToTime(ceil((microtime(true) - $time_start)));
