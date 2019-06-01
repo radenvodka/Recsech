@@ -22,7 +22,8 @@
 | Check Technologies   | :white_check_mark:        | 01/01/19 |
 | Whois                | :x: | N/A |
 | Crlf injection       | :x: | N/A |
-| Header Security      | :x: | N/A |
+| Header Security      | :white_check_mark | 01/01/19 |
+| Update Check         | :white_check_mark | 01/01/19 |
 | Port Scanner         | :x: | N/A |
 | Wordpress audit      | :x: | N/A |
 
