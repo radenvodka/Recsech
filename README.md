@@ -4,6 +4,8 @@ Recsech is a tool for doing Footprinting and Reconnaissance on a target web.
 
 [![undefined](https://img.shields.io/github/release/radenvodka/Recsech.svg)](https://github.com/radenvodka/Recsech/releases/latest)
 [![undefined](https://img.shields.io/github/last-commit/radenvodka/Recsech.svg)](https://github.com/radenvodka)
+[![undefined](https://img.shields.io/github/languages/top/radenvodka/Recsech.svg)](https://github.com/radenvodka)
+
 
 [![undefined](https://badgen.net/badge//Windows/blue?icon=windows)](https://github.com/radenvodka/Recsech/issues/3) [![undefined](https://badgen.net/badge//Linux64/orange?icon=terminal)](https://github.com/radenvodka/Recsech/releases)
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
@@ -79,6 +81,12 @@ Thank you for all.  How to support ?
 
 If you have additional information, you can make it on the [issue page](https://github.com/radenvodka/Recsech/issues).
 
+## Donation 
+
+    If you want to buy my coffee, you can send payments via BTC and Paypal.
+
+[![Bitcoin](https://img.balancebadge.io/btc/14MjRX4476hh8gwFNCj6GCAsSQuj42qUVf.svg)](https://www.blockchain.com/btc/address/14MjRX4476hh8gwFNCj6GCAsSQuj42qUVf)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/radenvodka)
 
 ## Disclaimer
 
