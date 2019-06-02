@@ -52,8 +52,23 @@ The following is a user guide that helps develop this tool.
 [![Radenvodka!](https://img.shields.io/badge/Radenvodka-Developers-1abc9c.svg)](https://github.com/radenvodka)
 [![GitHub followers](https://img.shields.io/github/followers/radenvodka.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/radenvodka?tab=followers)
 
+[![Radenvodka!](https://img.shields.io/badge/Linuxsec-PublicationMedia-1abc9c.svg)](https://github.com/radenvodka)
+[![GitHub followers](https://img.shields.io/github/followers/linuxsec.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/linuxsec?tab=followers)
 
 
 
     Help us to develop this tool, as a sign that you have contributed we will put your name in the contribution
 
+## Thanks
+
+Thank you for all.  How to support ?
+
+1. You can follow people who help contribute as a sign of gratitude.
+2. Publish or review on your blog. 
+
+If you have additional information, you can make it on the [issue page](https://github.com/radenvodka/Recsech/issues).
+
+
+## Disclaimer
+
+***Note: RISK IN YOUR OWN RISK, CODE ABUSE ABOVE OUTSIDE OUR RESPONSIBILITY and Anyone who is harmed by this open source, we are not responsible for this open source abuse.*** , Licensed under the [GPLv3.0](https://github.com/GitSquared/edex-ui/blob/master/LICENSE).
