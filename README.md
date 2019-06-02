@@ -5,11 +5,13 @@ Recsech is a tool for doing Footprinting and Reconnaissance on a target web.
 [![undefined](https://img.shields.io/github/release/radenvodka/Recsech.svg)](https://github.com/radenvodka/Recsech/releases/latest)
 [![undefined](https://img.shields.io/github/last-commit/radenvodka/Recsech.svg)](https://github.com/radenvodka)
 [![undefined](https://img.shields.io/github/languages/top/radenvodka/Recsech.svg)](https://github.com/radenvodka)
-[![undefined](https://img.shields.io/github/contributors/radenvodka/recsech.svg)](https://github.com/radenvodka/Recsech/graphs/contributors)
+[![undefined](https://img.shields.io/github/commits-since/radenvodka/Recsech/latest.svg)](https://github.com/radenvodka/Recsech/commits/master)
+
 
 
 [![undefined](https://badgen.net/badge//Windows/blue?icon=windows)](https://github.com/radenvodka/Recsech/issues/3) [![undefined](https://badgen.net/badge//Linux64/orange?icon=terminal)](https://github.com/radenvodka/Recsech/releases)
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+[![undefined](https://img.shields.io/github/contributors/radenvodka/recsech.svg)](https://github.com/radenvodka/Recsech/graphs/contributors)
 
 ![Recsech](https://github.com/radenvodka/Recsech/raw/master/Recsechv1.4.PNG)
 
