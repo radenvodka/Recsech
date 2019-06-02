@@ -50,14 +50,26 @@ Links
 * Download: [.tar.gz](https://github.com/radenvodka/Recsech/tarball/master) or [.zip](https://github.com/radenvodka/Recsech/zipball/master)
 * Issue tracker: https://github.com/radenvodka/Recsech/issues
 
+## Contribution
+ The following is a user guide that helps develop this tool 
+ `Help us to develop this tool, as a sign that you have contributed we will put your name in the contribution.`
+ 
+  [![Radenvodka!](https://img.shields.io/badge/Radenvodka-Developers-1abc9c.svg)](https://github.com/radenvodka)
+  [![GitHub followers](https://img.shields.io/github/followers/radenvodka.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/radenvodka?tab=followers)
+  
+  [![Radenvodka!](https://img.shields.io/badge/Linuxsec-PublicationMedia-1abc9c.svg)](https://github.com/radenvodka)
+  [![GitHub followers](https://img.shields.io/github/followers/linuxsec.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/linuxsec?tab=followers)
+
+
 ## Thanks
 
 Thank you for all.  How to support ?
 
-1. Can go through <a href="https://github.com/radenvodka" target="_blank"><img alt="undefined" src="https://img.shields.io/github/followers/radenvodka.svg?label=Follow&style=social"></a> 
+1. You can follow people who help contribute as a sign of gratitude.
 2. Publish or review on your blog. 
 
 If you have additional information, you can make it on the [issue page](https://github.com/radenvodka/Recsech/issues).
+
 
 ## Disclaimer
 
