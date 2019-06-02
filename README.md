@@ -3,8 +3,6 @@
 <a href="https://github.com/radenvodka/Recsech/releases/latest"><img alt="undefined" src="https://img.shields.io/github/release/radenvodka/Recsech.svg"></a>
 <a href="https://github.com/radenvodka" target="_blank"><img alt="undefined" src="https://img.shields.io/github/last-commit/radenvodka/Recsech.svg"></a>
 
-
-
 <a href="https://github.com/radenvodka/Recsech/releases" target="_blank"><img alt="undefined" src="https://badgen.net/badge//Windows/blue?icon=windows"></a>
 <a href="https://github.com/radenvodka/Recsech/releases" target="_blank"><img alt="undefined" src="https://badgen.net/badge//Linux64/orange?icon=terminal"></a>
 
@@ -71,4 +69,9 @@ If you have additional information, you can make it on the [issue page](https://
 
 ## Disclaimer
 
-***Note: RISK IN YOUR OWN RISK, CODE ABUSE ABOVE OUTSIDE OUR RESPONSIBILITY and Anyone who is harmed by this open source, we are not responsible for this open source abuse.*** , Licensed under the [GPLv3.0](https://github.com/GitSquared/edex-ui/blob/master/LICENSE).
+This is an open source for everyone, you may redistribute, modify, use patents and use privately without any obligation to redistribute. but it should be noted to include the source code of the library that was modified (not the source code of the entire program), include the license, include the original copyright of the author (radenvodka), and include any changes made (if modified). Users do not have the right to sue the creator when there is damage to the software or even demand if there is a problem caused by the makers of this tool. because every risk is caused by the user risk itself.
+
+
+License : [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+
+***GPL v3.0 specifically designed to allow users to use software distributed through networks such as websites and online services***
