@@ -1,4 +1,4 @@
-# Recsech - Recon And Research 
+# Recsech - Web Reconnaissance Tools
 
 Recsech is a tool for doing Footprinting and Reconnaissance on a target web.
 
