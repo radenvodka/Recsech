@@ -5,7 +5,7 @@ Recsech is a tool for doing Footprinting and Reconnaissance on a target web.
 [![undefined](https://img.shields.io/github/release/radenvodka/Recsech.svg)](https://github.com/radenvodka/Recsech/releases/latest)
 [![undefined](https://img.shields.io/github/last-commit/radenvodka/Recsech.svg)](https://github.com/radenvodka)
 [![undefined](https://img.shields.io/github/languages/top/radenvodka/Recsech.svg)](https://github.com/radenvodka)
-[![undefined](https://img.shields.io/github/commits-since/radenvodka/Recsech/latest.svg)](https://github.com/radenvodka/Recsech/commits/master)
+[![undefined](https://img.shields.io/github/commits-since/radenvodka/Recsech/latest.svg)](https://github.com/radenvodka/Recsech/tags)
 
 
 
