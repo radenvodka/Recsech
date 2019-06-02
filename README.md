@@ -2,39 +2,36 @@
 
 Recsech is a tool for doing Footprinting and Reconnaissance on a target web.
 
+[![undefined](https://img.shields.io/github/release/radenvodka/Recsech.svg)](https://github.com/radenvodka/Recsech/releases/latest)
+[![undefined](https://img.shields.io/github/last-commit/radenvodka/Recsech.svg)](https://github.com/radenvodka)
 
-<a href="https://github.com/radenvodka/Recsech/releases/latest"><img alt="undefined" src="https://img.shields.io/github/release/radenvodka/Recsech.svg"></a>
-<a href="https://github.com/radenvodka" target="_blank"><img alt="undefined" src="https://img.shields.io/github/last-commit/radenvodka/Recsech.svg"></a>
-
-<a href="https://github.com/radenvodka/Recsech/issues/3" target="_blank"><img alt="undefined" src="https://badgen.net/badge//Windows/blue?icon=windows"></a>
-<a href="https://github.com/radenvodka/Recsech/releases" target="_blank"><img alt="undefined" src="https://badgen.net/badge//Linux64/orange?icon=terminal"></a>
+[![undefined](https://badgen.net/badge//Windows/blue?icon=windows)](https://github.com/radenvodka/Recsech/issues/3) [![undefined](https://badgen.net/badge//Linux64/orange?icon=terminal)](https://github.com/radenvodka/Recsech/releases)
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
-
 ![Recsech](https://github.com/radenvodka/Recsech/raw/master/Recsechv1.4.PNG)
 
 ## Features in tools
 
-| Name    | Release            | Release Date       |
-| ------- | ------------------ | ------------------ |
-| Auto request with Proxy   | :white_check_mark:   | 01/05/19 |
-| Find Email   | :white_check_mark:                | 01/05/19 |
-| HoneySpot Detected   | :white_check_mark:        | 01/05/19 |
-| Subdomain takeover   | :white_check_mark:        | 01/05/19 |
-| Check Technologies   | :white_check_mark:        | 01/05/19 |
-| Whois                | :x: | N/A |
-| Crlf injection       | :x: | N/A |
-| Header Security      | :white_check_mark: | 01/05/19 |
-| Update Check         | :white_check_mark: | 01/05/19 |
-| Port Scanner         | :white_check_mark: | 02/05/19 |
-| Sort Domain By IP    | :white_check_mark: | 02/05/19 |
-| Wordpress audit      | :x: | N/A |
+| Name                    | Release            | Release Date |
+|-------------------------|--------------------|--------------|
+| Auto request with Proxy | :white_check_mark: | 01/05/19     |
+| Find Email              | :white_check_mark: | 01/05/19     |
+| HoneySpot Detected      | :white_check_mark: | 01/05/19     |
+| Subdomain takeover      | :white_check_mark: | 01/05/19     |
+| Check Technologies      | :white_check_mark: | 01/05/19     |
+| Whois                   | :x:                | N/A          |
+| Crlf injection          | :x:                | N/A          |
+| Header Security         | :white_check_mark: | 01/05/19     |
+| Update Check            | :white_check_mark: | 01/05/19     |
+| Port Scanner            | :white_check_mark: | 02/05/19     |
+| Sort Domain By IP       | :white_check_mark: | 02/05/19     |
+| Wordpress audit         | :x:                | N/A          |
 
-## Equirements for using this tool
+## Requirements for using this tool
 
-| Version | 
-| ------- |
-| PHP 7.X | 
-| PHP CURL|
+| Version  |
+|----------|
+| PHP 7.X  |
+| PHP CURL |
 
 
 Usage
