@@ -3,7 +3,7 @@
  * @Author: Eka Syahwan
  * @Date:   2017-12-11 17:01:26
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-02 21:16:43
+ * @Last Modified time: 2019-06-02 21:30:05
 */
 if(empty($argv[1])){
 	error_reporting(0);
@@ -12,7 +12,7 @@ if(empty($argv[1])){
 }else{
 	error_reporting(0);
 }
-
+require_once("lang/en.php");
 require_once("tools/sdata-modules.php");
 require_once("tools/crt.php");
 require_once("tools/Honeyscore.php");
@@ -76,9 +76,9 @@ function secondsToTime($seconds) {
 
 $Recsech->Update(); 
 
-echo color("grey","[i] Start scanning at ".date("d/m/Y h:i:m")."\r\n");
-$answr = stuck("[?] SCAN ONLY *.".$argv[1]." [Y/n] ");
-echo color("grey","[i] Collect domain information ".color("green",$argv[1])."\r\n");
+echo color("grey",$lang['0']." ".date("d/m/Y h:i:m")."\r\n");
+$answr = stuck($lang['1']." *.".$argv[1]." [Y/n] ");
+echo color("grey",$lang['2'].color("green",$argv[1])."\r\n");
 
 
 $Cert 		= new Cert($argv[1]);
@@ -93,7 +93,7 @@ foreach ($DomainList as $key => $domain) {
 
 $HTTPHeaders = new HTTPHeaders;
 
-echo color("yellow","[+] HTTP Headers for Securing : \r\n");
+echo color("yellow",$lang['3']." \r\n");
 $hit = 1;
 
 foreach ($DomainList as $key => $domains) {
@@ -112,7 +112,7 @@ foreach ($DomainList as $key => $domains) {
 	$hit++;
 } 
 
-echo color("yellow","[+] Inactive Domain : \r\n");
+echo color("yellow",$lang[4]."\r\n");
 $hit = 1;
 $DomainInactive = array_unique($DomainInactive);
 if(count($DomainInactive) < 1){
@@ -126,7 +126,7 @@ if(count($DomainInactive) < 1){
 
 $GithubIssue = new GithubIssue;
 
-echo color("yellow","[+] Gather information on Github : \r\n");
+echo color("yellow",$lang[5]."\r\n");
 $hit = 1;
 
 foreach ($DomainList as $key => $domains) {
@@ -145,7 +145,7 @@ foreach ($DomainList as $key => $domains) {
 			}
 		}
 		if(count($gitLeakemail) > 0){
-		       echo "                    -[ ".color("yellow","Disclosure Email")." ]-\r\n";
+		       echo "                    -[ ".color("yellow",$lang[6])." ]-\r\n";
 			foreach ($gitLeakemail as $key => $EmaiLs) {
 				echo "                     - ".color("green",$EmaiLs)." \r\n";
 			}
@@ -158,7 +158,7 @@ foreach ($DomainList as $key => $domains) {
 
 $Honeyscore = new Honeyscore;
 
-echo color("yellow","[+] Check Honeypot on all domains : \r\n");
+echo color("yellow",$lang[7]."\r\n");
 $hit = 1;
 
 foreach ($DomainList as $key => $domains) {
@@ -170,7 +170,7 @@ foreach ($DomainList as $key => $domains) {
 }
 
 
-echo color("yellow","[+] IP Based Domain Information :\r\n");
+echo color("yellow",$lang[8]."\r\n");
 $hit = 1;
 foreach ($sortByIP2domain as $ip => $listDomain) {
 	foreach ($listDomain as $ipNya => $arrayDomain) {
@@ -189,7 +189,7 @@ foreach ($sortByIP2domain as $ip => $listDomain) {
 
 $PORTScanning = new PORTScanning;
 
-echo color("yellow","[+] Check Open Port (Port Scanning) : \r\n");
+echo color("yellow",$lang[9]."\r\n");
 $hit = 1;
 $ipListServer = array_unique($ipListServer);
 foreach ($ipListServer as $key => $ipNya) {
@@ -201,7 +201,7 @@ foreach ($ipListServer as $key => $ipNya) {
 	$hit++;
 }
 
-echo color("yellow","[+] Domain Email @".$argv[1]." : \r\n");
+echo color("yellow",$lang[10]." @".$argv[1]." : \r\n");
 
 $EmailFinder = new EmailFinder;
 $getMAil  	 = $EmailFinder->Domain($argv[1]);
@@ -213,7 +213,7 @@ foreach ($getMAil as $keys => $email) {
 
 $DomainTakeOver = new DomainTakeOver;
 
-echo color("yellow","[+] Check Subdomain takeover : \r\n");
+echo color("yellow",$lang[11]."\r\n");
 $hit = 1;
 foreach ($DomainList as $keys => $domains) {
 	$DomainTakeOvers = $DomainTakeOver->Domain($domains);
@@ -224,7 +224,7 @@ foreach ($DomainList as $keys => $domains) {
 }
 
 $TechDetected = new TechDetected;
-echo color("yellow","[+] Check Technologies : \r\n");
+echo color("yellow",$lang[12]."\r\n");
 $hit = 1;
 foreach ($DomainList as $keys => $domains) {
 	echo "    [".($hit)."/".count($DomainList)."] ".color("green",$domains)." \r\n"; 
@@ -238,4 +238,8 @@ foreach ($DomainList as $keys => $domains) {
 }
 
 $checkMe  = secondsToTime(ceil((microtime(true) - $time_start)));
-echo color("grey","\n\n[i] Scanning is complete in ".$checkMe['h']." hour ".$checkMe['m']." minutes ".$checkMe['s']." seconds\r\n");
+
+$lang['13'] = str_replace('{h}', $checkMe['h'] , $lang['13']);
+$lang['13'] = str_replace('{m}', $checkMe['m'] , $lang['13']);
+$lang['13'] = str_replace('{s}', $checkMe['s'] , $lang['13']);
+echo color("grey","\n\n".$lang[13]."\r\n");

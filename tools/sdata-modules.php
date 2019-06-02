@@ -1,10 +1,9 @@
 <?php
-error_reporting(0);
 /**
  * @Author: Eka Syahwan
  * @Date:   2017-11-06 22:54:36
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-01 20:38:22
+ * @Last Modified time: 2019-06-02 20:32:18
  */
 class Sdata
 {
