@@ -46,12 +46,22 @@ Enough to execute the command :
 
 The following is a user guide that helps develop this tool : 
 
+**DEVELOPERS**
 
 [![Radenvodka!](https://img.shields.io/badge/Radenvodka-Developers-1abc9c.svg)](https://github.com/radenvodka)
 [![GitHub followers](https://img.shields.io/github/followers/radenvodka.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/radenvodka?tab=followers)
 
+
+**PUBLICATION**
+
 [![linuxsec!](https://img.shields.io/badge/Linuxsec-PublicationMedia-1abc9c.svg)](https://github.com/linuxsec)
 [![GitHub followers](https://img.shields.io/github/followers/linuxsec.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/linuxsec?tab=followers)
+
+
+**User Contribution - Thank You**
+
+[![noraj!](https://img.shields.io/badge/Noraj-Contribution-1abc9c.svg)](https://github.com/linuxsec)
+[![GitHub followers](https://img.shields.io/github/followers/Noraj.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/Noraj?tab=followers)
 
 
 
