@@ -63,7 +63,7 @@ The following is a user guide that helps develop this tool :
 
 **USER CONTRIBUTION - Thank You**
 
-[![noraj!](https://img.shields.io/badge/Noraj-Contribution-1abc9c.svg)](https://github.com/linuxsec)
+[![noraj!](https://img.shields.io/badge/Noraj-Contribution-1abc9c.svg)](https://github.com/Noraj)
 [![GitHub followers](https://img.shields.io/github/followers/Noraj.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/Noraj?tab=followers)
 
 
