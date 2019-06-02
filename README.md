@@ -26,7 +26,9 @@ Recsech is a tool for doing Footprinting and Reconnaissance on a target web.
 | Sort Domain By IP         | :white_check_mark: | 02/05/19     |
 | Wordpress audit           | :x:                | N/A          |
 | Reconnaissance On Github  | :white_check_mark: | 02/05/19     |
+| Language Selection        | :white_check_mark: | 02/05/19     |
 
+languages
 ## Requirements for using this tool
 
 | Version  |
