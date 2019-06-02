@@ -58,7 +58,7 @@ The following is a user guide that helps develop this tool :
 [![GitHub followers](https://img.shields.io/github/followers/linuxsec.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/linuxsec?tab=followers)
 
 
-**User Contribution - Thank You**
+**USER CONTRIBUTION - Thank You**
 
 [![noraj!](https://img.shields.io/badge/Noraj-Contribution-1abc9c.svg)](https://github.com/linuxsec)
 [![GitHub followers](https://img.shields.io/github/followers/Noraj.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/Noraj?tab=followers)
