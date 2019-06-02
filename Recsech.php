@@ -3,8 +3,13 @@
  * @Author: Eka Syahwan
  * @Date:   2017-12-11 17:01:26
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-02 20:25:08
+ * @Last Modified time: 2019-06-02 20:33:37
 */
+if($argv[1] == 'debug'){
+	error_reporting(E_ALL);
+}else{
+	error_reporting(0);
+}
 require_once("tools/sdata-modules.php");
 require_once("tools/crt.php");
 require_once("tools/Honeyscore.php");
