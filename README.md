@@ -3,7 +3,7 @@
 <a href="https://github.com/radenvodka/Recsech/releases/latest"><img alt="undefined" src="https://img.shields.io/github/release/radenvodka/Recsech.svg"></a>
 <a href="https://github.com/radenvodka" target="_blank"><img alt="undefined" src="https://img.shields.io/github/last-commit/radenvodka/Recsech.svg"></a>
 
-<a href="https://github.com/radenvodka/Recsech/releases" target="_blank"><img alt="undefined" src="https://badgen.net/badge//Windows/blue?icon=windows"></a>
+<a href="https://github.com/radenvodka/Recsech/issues/3" target="_blank"><img alt="undefined" src="https://badgen.net/badge//Windows/blue?icon=windows"></a>
 <a href="https://github.com/radenvodka/Recsech/releases" target="_blank"><img alt="undefined" src="https://badgen.net/badge//Linux64/orange?icon=terminal"></a>
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
