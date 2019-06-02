@@ -3,7 +3,7 @@
  * @Author: Eka Syahwan
  * @Date:   2017-12-11 17:01:26
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-02 21:30:05
+ * @Last Modified time: 2019-06-03 03:24:45
 */
 if(empty($argv[1])){
 	error_reporting(0);
@@ -23,6 +23,7 @@ require_once("tools/HTTPHeaders.php");
 require_once("tools/Update.php");
 require_once("tools/PortScanning.php");
 require_once("tools/GithubIssue.php");
+require_once("tools/WAF.php");
 
 $sdata = new Sdata;
 
@@ -81,6 +82,9 @@ $answr = stuck($lang['1']." *.".$argv[1]." [Y/n] ");
 echo color("grey",$lang['2'].color("green",$argv[1])."\r\n");
 
 
+echo color("yellow",$lang[15]." \r\n");
+
+
 $Cert 		= new Cert($argv[1]);
 $DomainList = $Cert->check($answr,$argv[1]); $DomainList = array_unique($DomainList);
 
@@ -90,6 +94,21 @@ foreach ($DomainList as $key => $domain) {
 	echo "    [".($hit)."/".count($DomainList)."] ".color("green",$domain)."\r\n";
 	$hit++;
 }
+
+
+$WAF = new WAF;
+echo color("yellow",$lang['14']." \r\n");
+$hit = 1;
+
+foreach ($DomainList as $key => $domains) {
+	$WAFME = $WAF->Domain($domains);
+		echo "    Domain : ".color("nevy",$domains)." \r\n";
+	foreach ($WAFME as $key => $value) {
+		echo "           + ".color("green","[".$value['httpcode']."] ").color("yellow"," ".$value['name']."")." \r\n";
+	}
+	$hit++;
+} 
+
 
 $HTTPHeaders = new HTTPHeaders;
 

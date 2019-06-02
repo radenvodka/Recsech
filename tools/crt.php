@@ -4,7 +4,7 @@ require_once("sdata-modules.php");
  * @Author: Nokia 1337
  * @Date:   2019-06-01 09:58:00
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-02 12:24:12
+ * @Last Modified time: 2019-06-03 03:24:03
 */
 class Cert
 {
@@ -14,8 +14,6 @@ class Cert
 		$this->domain = $domain;
 	}
 	function check($filterDomain , $domainInFilter){
-		
-		echo color("yellow","[+] Search for all (sub) domains : ");
 
 		$url[] 		= array('url' => 'https://crt.sh/?q='.$this->domain);
 		$respons 	= $this->sdata->sdata($url);unset($url);
@@ -39,9 +37,7 @@ class Cert
 					$domains[] = str_replace('*.', '', $domain);
 				}
 			}
-		}
-		
-		echo color("green","Done!")."\r\n";
+		} 
 
 		return array_unique($domains);
 	}
