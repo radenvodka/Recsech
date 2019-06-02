@@ -3,7 +3,7 @@
  * @Author: Eka Syahwan
  * @Date:   2017-12-11 17:01:26
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-03 03:24:45
+ * @Last Modified time: 2019-06-03 04:22:21
 */
 if(empty($argv[1])){
 	error_reporting(0);
@@ -149,31 +149,44 @@ echo color("yellow",$lang[5]."\r\n");
 $hit = 1;
 
 foreach ($DomainList as $key => $domains) {
-		echo "    Domain : ".color("nevy",$domains)." \r\n";
+		echo "    Domain : ".color("nevy",$domains);
 	$arrayGIT 	 = $GithubIssue->search($domains);
 	foreach ($arrayGIT as $key => $result) {
-		echo "\n           # ".color("yellow",$result['total_found'])." Issues On Github\r\n\n";
-		foreach ($result as $username => $listIssue) {
-				echo "           + Github : ".color("green",$username)." \r\n";
-				echo "                    -[ ".color("yellow","Link Issue")." ]-\r\n";
-			foreach ($listIssue as $key => $link) {
-				echo "                      - ".color("purple",$link['url'])." \r\n";
-				foreach ($link['email'] as $key => $tempEmail) {
-					$gitLeakemail[] = $tempEmail;
+		if($result['total_found'] > 0){
+			echo "\r\n\n           # ".color("yellow",$result['total_found'])." Issues On Github (".$domains.")\r\n\n";
+			foreach ($result as $username => $listIssue) {
+				if($username != 'total_found'){
+					echo "           + ".color("yellow",'Github')."     : ".color("green",$username)." \r\n";
+					echo "           + ".color("yellow","Link Issue")." : ";
+					foreach ($listIssue as $key => $link) {
+						if($key == 0){
+							echo color("purple",$link['url'])." \r\n";
+						}else{
+							echo "                        - ".color("purple",$link['url'])." \r\n";
+						}
+						foreach ($link['email'] as $key => $tempEmail) {
+							$gitLeakemail[] = $tempEmail;
+						}
+					}
 				}
 			}
+			echo "\n";
+		}else{
+			echo " ".color("red","N/A")."\r\n";
 		}
 		if(count($gitLeakemail) > 0){
-		       echo "                    -[ ".color("yellow",$lang[6])." ]-\r\n";
+		       echo "          -[ ".color("yellow",$lang[6])." ]-\r\n\n";
 			foreach ($gitLeakemail as $key => $EmaiLs) {
-				echo "                     - ".color("green",$EmaiLs)." \r\n";
+				echo "            - ".color("green",$EmaiLs)." \r\n";
 			}
+			echo "\n";
 			unset($gitLeakemail);
 		}
 	}
 	$hit++;
 } 
 
+echo "\n";
 
 $Honeyscore = new Honeyscore;
 
