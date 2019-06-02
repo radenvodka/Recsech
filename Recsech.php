@@ -3,7 +3,7 @@
  * @Author: Eka Syahwan
  * @Date:   2017-12-11 17:01:26
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-02 16:47:34
+ * @Last Modified time: 2019-06-02 20:25:08
 */
 require_once("tools/sdata-modules.php");
 require_once("tools/crt.php");
@@ -14,6 +14,7 @@ require_once("tools/EmailFinder.php");
 require_once("tools/HTTPHeaders.php");
 require_once("tools/Update.php");
 require_once("tools/PortScanning.php");
+require_once("tools/GithubIssue.php");
 
 $sdata = new Sdata;
 
@@ -111,6 +112,36 @@ if(count($DomainInactive) < 1){
 		$hit++;
 	}
 }
+
+$GithubIssue = new GithubIssue;
+
+echo color("yellow","[+] Gather information on Github : \r\n");
+$hit = 1;
+
+foreach ($DomainList as $key => $domains) {
+	echo "    Domain : ".color("nevy",$domains)." \r\n";
+	$arrayGIT 	 = $GithubIssue->search($domains);
+	foreach ($arrayGIT as $key => $result) {
+		foreach ($result as $username => $listIssue) {
+				echo "           + Github : ".color("green",$username)." \r\n";
+				echo "                    -[ ".color("yellow","Link Issue")." ]-\r\n";
+			foreach ($listIssue as $key => $link) {
+				echo "                      - ".color("purple",$link['url'])." \r\n";
+				foreach ($link['email'] as $key => $tempEmail) {
+					$gitLeakemail[] = $tempEmail;
+				}
+			}
+		}
+		if(count($gitLeakemail) > 0){
+		       echo "                    -[ ".color("yellow","Disclosure Email")." ]-\r\n";
+			foreach ($gitLeakemail as $key => $EmaiLs) {
+				echo "                     - ".color("green",$EmaiLs)." \r\n";
+			}
+			unset($gitLeakemail);
+		}
+	}
+	$hit++;
+} 
 
 
 $Honeyscore = new Honeyscore;
