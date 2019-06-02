@@ -46,6 +46,11 @@ Enough to execute the command :
 
     php Recsech.php example.com
 
+or if it doesn't work, use the command : 
+    
+    php Recsech.php debug
+
+and don't forget to ask at [issue page](https://github.com/radenvodka/Recsech/issues)
 
 ## Contribution
 
