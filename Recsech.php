@@ -3,7 +3,7 @@
  * @Author: Eka Syahwan
  * @Date:   2017-12-11 17:01:26
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-02 14:42:20
+ * @Last Modified time: 2019-06-02 16:47:34
 */
 require_once("tools/sdata-modules.php");
 require_once("tools/crt.php");
@@ -17,10 +17,12 @@ require_once("tools/PortScanning.php");
 
 $sdata = new Sdata;
 
+$Recsech = new Recsech;
+
 echo "\n\n ╦═╗┌─┐┌─┐┌─┐┌─┐┌─┐┬ ┬ \r\n";
 echo " ╠╦╝├┤ │  └─┐├┤ │  ├─┤ \r\n";
 echo " ╩╚═└─┘└─┘└─┘└─┘└─┘┴ ┴ \r\n";
-echo " Recsech - Recon And Research (V.1.2) \r\n\n";
+echo " Recsech - Recon And Research (".$Recsech->version().") \r\n\n";
 
 if(empty($argv[1])){
 	die(' use command : '.$argv[0]." domain.com\r\n");
@@ -59,13 +61,12 @@ function secondsToTime($seconds) {
    );
   return $obj;
 }
- 
+
+$Recsech->Update(); 
+
 echo color("grey","[i] Start scanning at ".date("d/m/Y h:i:m")."\r\n");
 $answr = stuck("[+] SCAN ONLY *.".$argv[1]." [Y/n] ");
 echo color("purple","[i] Collect domain information ".$argv[1]."\r\n");
-
-$Recsech = new Recsech;
-$Recsech->Update();
 
 
 $Cert 		= new Cert($argv[1]);

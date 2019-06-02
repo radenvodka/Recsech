@@ -4,15 +4,14 @@ require_once("sdata-modules.php");
  * @Author: Nokia 1337
  * @Date:   2019-06-01 09:58:00
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-01 21:19:49
+ * @Last Modified time: 2019-06-02 16:48:16
 */
 class Recsech
 {
 	function __construct()
 	{
 		$this->sdata  	= new Sdata;
-		$this->version 	= '1.3';
-		$this->Required();
+		$this->version 	= '1.4';
 	}
 	function Required(){
 		echo color("yellow", "[+] Check required : \r\n");
@@ -22,6 +21,7 @@ class Recsech
 		echo "\r\n";
 	}
 	function Update(){
+		$this->Required();
 		$url[] 		= array('url' => 'https://api.github.com/repos/radenvodka/Recsech/releases/latest');
 		$head[] 	=  array(
 			'falsehead' => true,
@@ -37,5 +37,8 @@ class Recsech
 				die();
 			}
 		}
+	}
+	function version(){
+		return $this->version;
 	}
 }
