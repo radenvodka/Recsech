@@ -3,13 +3,16 @@
  * @Author: Eka Syahwan
  * @Date:   2017-12-11 17:01:26
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-02 20:33:37
+ * @Last Modified time: 2019-06-02 21:16:43
 */
-if($argv[1] == 'debug'){
+if(empty($argv[1])){
+	error_reporting(0);
+}else if($argv[1] == 'debug'){
 	error_reporting(E_ALL);
 }else{
 	error_reporting(0);
 }
+
 require_once("tools/sdata-modules.php");
 require_once("tools/crt.php");
 require_once("tools/Honeyscore.php");
@@ -25,13 +28,16 @@ $sdata = new Sdata;
 
 $Recsech = new Recsech;
 
-echo "\n\n ╦═╗┌─┐┌─┐┌─┐┌─┐┌─┐┬ ┬ \r\n";
-echo " ╠╦╝├┤ │  └─┐├┤ │  ├─┤ \r\n";
-echo " ╩╚═└─┘└─┘└─┘└─┘└─┘┴ ┴ \r\n";
-echo " Recsech - Recon And Research (".$Recsech->version().") \r\n\n";
+echo "\n     ──────────────────────────────────\r\n";
+echo "         ╦═╗┌─┐┌─┐".color("green","┌─┐┌─┐┌─┐")."┬ ┬ \r\n";
+echo "         ╠╦╝├┤ │  ".color("green","└─┐├┤ │  ")."├─┤ \r\n";
+echo "         ╩╚═└─┘└─┘".color("green","└─┘└─┘└─┘")."┴ ┴ \r\n";
+echo "     ──────────────────────────────────\r\n";
+echo "     ~ Web ".color("red","Reconnaissance")." Tools (".$Recsech->version().") ~\r\n\n";
+
 
 if(empty($argv[1])){
-	die(' use command : '.$argv[0]." domain.com\r\n");
+	die('   use command : php '.color("red",$argv[0])." ".color("green","domain.com\r\n"));
 }
 
 function color($color = "default" , $text){
@@ -71,8 +77,8 @@ function secondsToTime($seconds) {
 $Recsech->Update(); 
 
 echo color("grey","[i] Start scanning at ".date("d/m/Y h:i:m")."\r\n");
-$answr = stuck("[+] SCAN ONLY *.".$argv[1]." [Y/n] ");
-echo color("purple","[i] Collect domain information ".$argv[1]."\r\n");
+$answr = stuck("[?] SCAN ONLY *.".$argv[1]." [Y/n] ");
+echo color("grey","[i] Collect domain information ".color("green",$argv[1])."\r\n");
 
 
 $Cert 		= new Cert($argv[1]);
@@ -124,9 +130,10 @@ echo color("yellow","[+] Gather information on Github : \r\n");
 $hit = 1;
 
 foreach ($DomainList as $key => $domains) {
-	echo "    Domain : ".color("nevy",$domains)." \r\n";
+		echo "    Domain : ".color("nevy",$domains)." \r\n";
 	$arrayGIT 	 = $GithubIssue->search($domains);
 	foreach ($arrayGIT as $key => $result) {
+		echo "\n           # ".color("yellow",$result['total_found'])." Issues On Github\r\n\n";
 		foreach ($result as $username => $listIssue) {
 				echo "           + Github : ".color("green",$username)." \r\n";
 				echo "                    -[ ".color("yellow","Link Issue")." ]-\r\n";
