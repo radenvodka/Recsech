@@ -3,7 +3,7 @@
  * @Author: Eka Syahwan
  * @Date:   2017-12-11 17:01:26
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-01 21:16:54
+ * @Last Modified time: 2019-06-02 14:42:20
 */
 require_once("tools/sdata-modules.php");
 require_once("tools/crt.php");
@@ -13,6 +13,7 @@ require_once("tools/TechDetected.php");
 require_once("tools/EmailFinder.php");
 require_once("tools/HTTPHeaders.php");
 require_once("tools/Update.php");
+require_once("tools/PortScanning.php");
 
 $sdata = new Sdata;
 
@@ -60,14 +61,16 @@ function secondsToTime($seconds) {
 }
  
 echo color("grey","[i] Start scanning at ".date("d/m/Y h:i:m")."\r\n");
-echo color("purple","[i] Collect domain information : ".$argv[1]."\r\n");
+$answr = stuck("[+] SCAN ONLY *.".$argv[1]." [Y/n] ");
+echo color("purple","[i] Collect domain information ".$argv[1]."\r\n");
 
 $Recsech = new Recsech;
 $Recsech->Update();
 
 
 $Cert 		= new Cert($argv[1]);
-$DomainList = $Cert->check(); $DomainList = array_unique($DomainList);
+$DomainList = $Cert->check($answr,$argv[1]); $DomainList = array_unique($DomainList);
+
 
 $hit = 1;
 foreach ($DomainList as $key => $domain) {
@@ -99,9 +102,13 @@ foreach ($DomainList as $key => $domains) {
 echo color("yellow","[+] Inactive Domain : \r\n");
 $hit = 1;
 $DomainInactive = array_unique($DomainInactive);
-foreach ($DomainInactive as $key => $domains) {
-	echo "    + ".color("red",$domains)."\r\n";
-	$hit++;
+if(count($DomainInactive) < 1){
+	echo "    + N/A\r\n";
+}else{
+	foreach ($DomainInactive as $key => $domains) {
+		echo "    + ".color("red",$domains)."\r\n";
+		$hit++;
+	}
 }
 
 
@@ -113,9 +120,42 @@ $hit = 1;
 foreach ($DomainList as $key => $domains) {
 	$Honey = $Honeyscore->Domain($domains);
 	echo "    + ".color("nevy",$Honey[ip])." ".color("green",$Honey[domain])." ".$Honey[score]."\r\n";
+	$ipListServer[] = $Honey['ip'];
+	$sortByIP2domain['data'][$Honey['ip']][] = $Honey['domain'];
 	$hit++;
 }
 
+
+echo color("yellow","[+] IP Based Domain Information :\r\n");
+$hit = 1;
+foreach ($sortByIP2domain as $ip => $listDomain) {
+	foreach ($listDomain as $ipNya => $arrayDomain) {
+				echo "    + ".color("nevy",$ipNya);
+		foreach ($arrayDomain as $key => $dom) {
+			if($key == 0){
+				echo color("green"," ".$dom)." \r\n";
+			}else{
+				echo "                     ".color("green",$dom)." \r\n";
+			}
+		}
+	}
+	$hit++;
+}
+
+
+$PORTScanning = new PORTScanning;
+
+echo color("yellow","[+] Check Open Port (Port Scanning) : \r\n");
+$hit = 1;
+$ipListServer = array_unique($ipListServer);
+foreach ($ipListServer as $key => $ipNya) {
+		echo "    IP SERVER : ".color("green",$ipNya)." \r\n";
+	$PORTScannings = $PORTScanning->IP($ipNya);
+	foreach ($PORTScannings as $key => $value) {
+		echo "              + ".color("nevy",$value[port])." ".color("green",$value[state])." ".$value[service]."\r\n";
+	}
+	$hit++;
+}
 
 echo color("yellow","[+] Domain Email @".$argv[1]." : \r\n");
 

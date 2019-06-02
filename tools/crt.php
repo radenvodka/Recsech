@@ -4,7 +4,7 @@ require_once("sdata-modules.php");
  * @Author: Nokia 1337
  * @Date:   2019-06-01 09:58:00
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-01 10:29:22
+ * @Last Modified time: 2019-06-02 12:24:12
 */
 class Cert
 {
@@ -13,7 +13,7 @@ class Cert
 		$this->sdata  = new Sdata;
 		$this->domain = $domain;
 	}
-	function check(){
+	function check($filterDomain , $domainInFilter){
 		
 		echo color("yellow","[+] Search for all (sub) domains : ");
 
@@ -31,7 +31,13 @@ class Cert
 		foreach ($respons as $key => $value) {
 			preg_match_all('/DNS:(.*?)<BR>/m', $value['respons'], $matches);
 			foreach ($matches[1] as $key => $domain) {
-				$domains[] = $domain;
+				if(strtolower($filterDomain) == 'y'){
+					if(preg_match("/".$domainInFilter."/", $domain)){
+						$domains[] = str_replace('*.', '', $domain);
+					}
+				}else{
+					$domains[] = str_replace('*.', '', $domain);
+				}
 			}
 		}
 		
