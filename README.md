@@ -35,13 +35,16 @@ Recsech is a tool for doing Footprinting and Reconnaissance on a target web.
 | Reconnaissance On Github  | :white_check_mark: | 02/05/19     |
 | Language Selection        | :white_check_mark: | 02/05/19     |
 
-languages
+
 ## Requirements for using this tool
 
-| Version  |
-|----------|
-| PHP 7.X  |
-| PHP CURL |
+We need several requirements to use this tool to run smoothly.
+
+##### Linux
+![PHP 7.X](https://img.shields.io/badge/PHP-7.X-success.svg "PHP 7.X")
+![PHP CURL](https://img.shields.io/badge/PHP%20CURL-ALL-success.svg "PHP CURL")
+##### Windows
+![PHP CURL](https://img.shields.io/badge/XAMPP-7.3.5-success.svg "XAMPP 7.X")
 
 
 Usage
@@ -61,19 +64,19 @@ and don't forget to ask at [issue page](https://github.com/radenvodka/Recsech/is
 
 The following is a user guide that helps develop this tool : 
 
-**DEVELOPERS**
+##### DEVELOPERS
 
 [![Radenvodka!](https://img.shields.io/badge/Radenvodka-DEVELOPERS-blueviolet.svg)](https://github.com/radenvodka)
 [![GitHub followers](https://img.shields.io/github/followers/radenvodka.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/radenvodka?tab=followers)
 
 
-**PUBLICATION**
+##### PUBLICATION
 
 [![linuxsec!](https://img.shields.io/badge/LinuxSec-PUBLICATION%20MEDIA-RED.svg)](https://github.com/linuxsec)
 [![GitHub followers](https://img.shields.io/github/followers/linuxsec.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/linuxsec?tab=followers)
 
 
-**USER CONTRIBUTION - Thank You**
+##### USER CONTRIBUTION - Thank You
 
 [![noraj!](https://img.shields.io/badge/Noraj-CONTRIBUTION-blue.svg)](https://github.com/Noraj)
 [![GitHub followers](https://img.shields.io/github/followers/Noraj.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/Noraj?tab=followers)
