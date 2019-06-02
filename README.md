@@ -46,7 +46,7 @@ Enough to execute the command :
 
 ## Contribution
 
-The following is a user guide that helps develop this tool.
+The following is a user guide that helps develop this tool : 
 
 
 [![Radenvodka!](https://img.shields.io/badge/Radenvodka-Developers-1abc9c.svg)](https://github.com/radenvodka)
