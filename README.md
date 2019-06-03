@@ -13,7 +13,7 @@ Recsech is a tool for doing Footprinting and Reconnaissance on a target web.
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![undefined](https://img.shields.io/github/contributors/radenvodka/recsech.svg)](https://github.com/radenvodka/Recsech/graphs/contributors)
 
-[![Recsech](https://github.com/radenvodka/Recsech/raw/master/Recsechv1.4.PNG)](https://asciinema.org/a/7lFePLZGJs8OYlbmG3H0J2zx5)
+[![asciicast](https://asciinema.org/a/Yv71F5OKtz4Ubg0YZt3Copm7L.svg)](https://asciinema.org/a/Yv71F5OKtz4Ubg0YZt3Copm7L)
 
 
 ## Features in tools
