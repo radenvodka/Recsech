@@ -1,5 +1,3 @@
-[![undefined](https://img.shields.io/github/contributors/radenvodka/recsech.svg)](https://github.com/radenvodka/Recsech/graphs/contributors)  `Users have contributed`
-
 ### How to become a contribution to Recsech :
 
 ```Come together to develop this tool. we need some help, here is the list:```
