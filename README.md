@@ -1,12 +1,12 @@
 # Recsech - Web Reconnaissance Tools
 
-Recsech is a tool for doing Footprinting and Reconnaissance on a target web.
+Recsech is a tool for doing `Footprinting and Reconnaissance` on the target web. Recsech collects information such as DNS Information, Sub Domains, HoneySpot Detected, Subdomain takeovers, Reconnaissance On Github and much more you can see in [Features in tools](https://github.com/radenvodka/Recsech#features-in-tools) .
+
 
 [![undefined](https://img.shields.io/github/release/radenvodka/Recsech.svg)](https://github.com/radenvodka/Recsech/releases/latest)
 [![undefined](https://img.shields.io/github/last-commit/radenvodka/Recsech.svg)](https://github.com/radenvodka)
 [![undefined](https://img.shields.io/github/languages/top/radenvodka/Recsech.svg)](https://github.com/radenvodka)
 [![undefined](https://img.shields.io/github/commits-since/radenvodka/Recsech/latest.svg)](https://github.com/radenvodka/Recsech/tags)
-
 
 
 [![undefined](https://badgen.net/badge//Windows/blue?icon=windows)](https://github.com/radenvodka/Recsech/issues/3) [![undefined](https://badgen.net/badge//Linux64/orange?icon=terminal)](https://github.com/radenvodka/Recsech/releases)
