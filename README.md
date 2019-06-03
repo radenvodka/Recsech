@@ -106,6 +106,9 @@ The following is a user guide that helps develop this tool :
 [![linuxsec!](https://img.shields.io/badge/LinuxSec-PUBLICATION%20MEDIA-RED.svg)](https://github.com/linuxsec)
 [![GitHub followers](https://img.shields.io/github/followers/linuxsec.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/linuxsec?tab=followers)
 
+[![KitPloit!](https://img.shields.io/badge/KitPloit-PUBLICATION%20MEDIA-RED.svg)](https://www.kitploit.com)
+[![GitHub followers](https://img.shields.io/github/followers/KitPloit.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/KitPloit?tab=followers)
+
 
 ##### USER CONTRIBUTION - Thank You
 
