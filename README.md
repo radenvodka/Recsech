@@ -116,8 +116,9 @@ The following is a user guide that helps develop this tool :
 [![GitHub followers](https://img.shields.io/github/followers/Noraj.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/Noraj?tab=followers)
 
 
-
     Help us to develop this tool, as a sign that you have contributed we will put your name in the contribution
+
+If you want to be part of the contribution? [please read here](https://github.com/radenvodka/Recsech/blob/master/Contribution.md)
 
 ## Thanks
 
