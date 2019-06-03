@@ -46,6 +46,35 @@ We need several requirements to use this tool to run smoothly.
 ##### Windows
 ![PHP CURL](https://img.shields.io/badge/XAMPP-7.3.5-success.svg "XAMPP 7.X")
 
+## Installation 
+
+You can download the latest tarball by clicking [here](https://github.com/radenvodka/Recsech/tarball/master) or latest zipball by clicking  [here](https://github.com/radenvodka/Recsech/zipball/master).
+
+Preferably, you can download sqlmap by cloning the [Git](https://github.com/radenvodka/Recsech) repository:
+
+    git clone --depth 1 https://github.com/radenvodka/Recsech.git Recsech
+
+
+##### Recsech Environment Windows (Command Prompt Windows) 
+
+Download Recsech : 
+
+<a href="https://github.com/radenvodka/Recsech/tree/RecsechWIN" target="_blank"><img alt="undefined" src="https://badgen.net/badge//Windows/blue?icon=windows"></a>
+
+How to install to Windows CLI : 
+
+1. Extract all files in C: \Windows
+2. Edit Files `Recsech.bat` , then set your PHP patch (if you have installed xampp on your C drive you don't need to do this step) 
+```
+@echo off
+set PATH=%PATH%;C:\xampp\php
+title Recsech - Recon and Research
+php "C:\Windows\Recsech.php" %1
+```
+3. Open cmd and do the Recsech command.
+
+![Recsech](https://raw.githubusercontent.com/radenvodka/Recsech/RecsechWIN/run.PNG)
+
 
 Usage
 ----
@@ -59,6 +88,7 @@ or if it doesn't work, use the command :
     php Recsech.php debug
 
 and don't forget to ask at [issue page](https://github.com/radenvodka/Recsech/issues)
+
 
 ## Contribution
 
