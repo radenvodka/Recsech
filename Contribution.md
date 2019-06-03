@@ -6,7 +6,7 @@ Recsech is a tool for doing `Footprinting and Reconnaissance` on the target web.
 
 ### How to become a contribution to Recsech :
 
-Come together to develop this tool. we need some help, here is the list:
+```Come together to develop this tool. we need some help, here is the list:```
 
 #### Developers : 
 
