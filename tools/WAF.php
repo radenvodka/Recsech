@@ -5,7 +5,7 @@ require_once("sdata-modules.php");
  * @Author: Nokia 1337
  * @Date:   2019-06-01 09:58:00
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-03 03:27:43
+ * @Last Modified time: 2019-06-03 13:12:33
 */
 class WAF
 {
@@ -86,7 +86,7 @@ class WAF
 			foreach ($Fingerprint as $name => $regex) {
 				if(preg_match("/".$regex."/", $value['respons'])){
 					$check[] = array(
-						'name' 		=> $name,
+						'name' 		=> strtoupper($name),
 						'httpcode'  => $value['info']['http_code'],
 					);
 				}
