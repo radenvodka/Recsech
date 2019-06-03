@@ -4,14 +4,14 @@ require_once("sdata-modules.php");
  * @Author: Nokia 1337
  * @Date:   2019-06-01 09:58:00
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-02 16:48:16
+ * @Last Modified time: 2019-06-03 03:26:17
 */
 class Recsech
 {
 	function __construct()
 	{
 		$this->sdata  	= new Sdata;
-		$this->version 	= '1.4';
+		$this->version 	= '1.5';
 	}
 	function Required(){
 		echo color("yellow", "[+] Check required : \r\n");
