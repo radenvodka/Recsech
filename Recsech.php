@@ -3,7 +3,7 @@
  * @Author: Eka Syahwan
  * @Date:   2017-12-11 17:01:26
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-05 02:48:15
+ * @Last Modified time: 2019-06-05 03:03:10
 */
 if(empty($argv[1])){
 	error_reporting(0);
@@ -140,9 +140,9 @@ if(count($WPDetected) > 0){
 			$PluginsWP = $WPAudit->wpvulndbPlugins( $wpversion['plugins'][1] );
 			foreach ($PluginsWP as $key => $value) {
 				foreach ($value['vuln'] as $key => $vulnane) {
-						echo "\n            + ".color("red",$vulnane['title'])."\n\n";
+						echo "\n            + ".color("red",$vulnane['title'])."\r\n";
 					foreach ($vulnane['references']['url'] as $key => $urls) {
-						echo "            * ". color("yellow",$urls)."\r\n";
+						echo "             * ". color("yellow",$urls)."\r\n";
 					}
 				}
 			}

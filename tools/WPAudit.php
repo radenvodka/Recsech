@@ -4,7 +4,7 @@ require_once("sdata-modules.php");
  * @Author: Nokia 1337
  * @Date:   2019-06-01 09:58:00
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-05 02:25:56
+ * @Last Modified time: 2019-06-05 02:59:50
 */
 class WPAudit
 {
@@ -22,8 +22,8 @@ class WPAudit
 		$respons 	= $this->sdata->sdata($url,$head);unset($url);unset($head);
 		foreach ($respons as $key => $value) {
 			preg_match_all('/<meta name="generator" content="WordPress (.*?)" \/>/m', $value['respons'], $matchesversion);
-			preg_match_all('/wp-content\/plugins\/(.*?)\//', $value['respons'], $plugins);
 			if(preg_match("/wp-content/",$value['respons'])){
+				preg_match_all('/wp-content\/plugins\/(.*?)\//', $value['respons'], $plugins);
 				if(empty($matchesversion[1][0])){
 					preg_match_all('/WordPress (.*?)"/m', $value['respons'], $matchesversion);
 					$matchesversion[1][0] = $matchesversion[1][0];
