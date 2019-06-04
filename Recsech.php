@@ -3,7 +3,7 @@
  * @Author: Eka Syahwan
  * @Date:   2017-12-11 17:01:26
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-03 04:22:21
+ * @Last Modified time: 2019-06-05 02:48:15
 */
 if(empty($argv[1])){
 	error_reporting(0);
@@ -24,17 +24,20 @@ require_once("tools/Update.php");
 require_once("tools/PortScanning.php");
 require_once("tools/GithubIssue.php");
 require_once("tools/WAF.php");
+require_once("tools/WPAudit.php");
 
 $sdata = new Sdata;
 
 $Recsech = new Recsech;
 
-echo "\n     ──────────────────────────────────\r\n";
-echo "         ╦═╗┌─┐┌─┐".color("green","┌─┐┌─┐┌─┐")."┬ ┬ \r\n";
+echo "\n     ───────────────────────────────────────\r\n";
+echo "         ╦═╗┌─┐┌─┐".color("green","┌─┐┌─┐┌─┐")."┬ ┬ (".$Recsech->version().")\r\n";
 echo "         ╠╦╝├┤ │  ".color("green","└─┐├┤ │  ")."├─┤ \r\n";
 echo "         ╩╚═└─┘└─┘".color("green","└─┘└─┘└─┘")."┴ ┴ \r\n";
-echo "     ──────────────────────────────────\r\n";
-echo "     ~ Web ".color("red","Reconnaissance")." Tools (".$Recsech->version().") ~\r\n\n";
+echo "     ───────────────────────────────────────\r\n";
+echo "     Github : https://github.com/radenvodka \r\n";
+echo "     ───────────────────────────────────────\r\n";
+echo "     ~ Web ".color("red","Reconnaissance")." Tools ~\r\n\n";
 
 
 if(empty($argv[1])){
@@ -82,12 +85,12 @@ $answr = stuck($lang['1']." *.".$argv[1]." [Y/n] ");
 echo color("grey",$lang['2'].color("green",$argv[1])."\r\n");
 
 
-echo color("yellow",$lang[15]." \r\n");
-
+echo color("yellow",$lang[15]." \r\n\n");
 
 $Cert 		= new Cert($argv[1]);
 $DomainList = $Cert->check($answr,$argv[1]); $DomainList = array_unique($DomainList);
 
+echo "\n";
 
 $hit = 1;
 foreach ($DomainList as $key => $domain) {
@@ -95,12 +98,14 @@ foreach ($DomainList as $key => $domain) {
 	$hit++;
 }
 
+echo "\n";
 
 $WAF = new WAF;
 echo color("yellow",$lang['14']." \r\n");
 $hit = 1;
 
 foreach ($DomainList as $key => $domains) {
+	echo "\n";
 	$WAFME = $WAF->Domain($domains);
 		echo "    Domain : ".color("nevy",$domains)." \r\n";
 	foreach ($WAFME as $key => $value) {
@@ -109,10 +114,54 @@ foreach ($DomainList as $key => $domains) {
 	$hit++;
 } 
 
+echo "\n";
+
+
+$WPAudit 	= new WPAudit;
+
+	echo color("yellow","[+] Wordpress Audit : \r\n");
+
+$WPDetected = $WPAudit->AllDomain($DomainList);
+
+if(count($WPDetected) > 0){
+	foreach ($WPDetected as $key => $wpversion) {
+		echo "\n    Domain : ".color("green",$wpversion['domain'])." ".color("nevy",$wpversion['version'])." \r\n\n";
+		$VersionCheck = $WPAudit->wpvulndbVersion($wpversion['domain'] , $wpversion['version']);
+		echo "           + Version Vulnerability : \r\n\n";
+		if(count($VersionCheck) > 0){
+			foreach ($VersionCheck as $key => $r) {
+				echo "             - ".color("red",$r['title'])." \r\n";
+			}
+		}else{
+				echo "             - ".color("red",'N/A')." \r\n";
+		}
+				echo "\n            + Plugins Vulnerability : \r\n";
+		if(count($wpversion['plugins'][1]) > 0){
+			$PluginsWP = $WPAudit->wpvulndbPlugins( $wpversion['plugins'][1] );
+			foreach ($PluginsWP as $key => $value) {
+				foreach ($value['vuln'] as $key => $vulnane) {
+						echo "\n            + ".color("red",$vulnane['title'])."\n\n";
+					foreach ($vulnane['references']['url'] as $key => $urls) {
+						echo "            * ". color("yellow",$urls)."\r\n";
+					}
+				}
+			}
+			echo "\n";
+		}else{
+			echo "             - ".color("red",'N/A')." \r\n";
+		}
+	}
+}else{
+	echo "    + ".color("red",'N/A')." \r\n"; 
+}
+
+echo "\n";
+
+
 
 $HTTPHeaders = new HTTPHeaders;
 
-echo color("yellow",$lang['3']." \r\n");
+echo color("yellow",$lang['3']." \r\n\n");
 $hit = 1;
 
 foreach ($DomainList as $key => $domains) {
@@ -131,6 +180,8 @@ foreach ($DomainList as $key => $domains) {
 	$hit++;
 } 
 
+echo "\n";
+
 echo color("yellow",$lang[4]."\r\n");
 $hit = 1;
 $DomainInactive = array_unique($DomainInactive);
@@ -145,7 +196,7 @@ if(count($DomainInactive) < 1){
 
 $GithubIssue = new GithubIssue;
 
-echo color("yellow",$lang[5]."\r\n");
+echo color("yellow",$lang[5]."\r\n\n");
 $hit = 1;
 
 foreach ($DomainList as $key => $domains) {
@@ -190,7 +241,7 @@ echo "\n";
 
 $Honeyscore = new Honeyscore;
 
-echo color("yellow",$lang[7]."\r\n");
+echo color("yellow",$lang[7]."\r\n\n");
 $hit = 1;
 
 foreach ($DomainList as $key => $domains) {
@@ -200,9 +251,9 @@ foreach ($DomainList as $key => $domains) {
 	$sortByIP2domain['data'][$Honey['ip']][] = $Honey['domain'];
 	$hit++;
 }
+echo "\n";
 
-
-echo color("yellow",$lang[8]."\r\n");
+echo color("yellow",$lang[8]."\r\n\n");
 $hit = 1;
 foreach ($sortByIP2domain as $ip => $listDomain) {
 	foreach ($listDomain as $ipNya => $arrayDomain) {
@@ -218,10 +269,11 @@ foreach ($sortByIP2domain as $ip => $listDomain) {
 	$hit++;
 }
 
+echo "\n";
 
 $PORTScanning = new PORTScanning;
 
-echo color("yellow",$lang[9]."\r\n");
+echo color("yellow",$lang[9]."\r\n\n");
 $hit = 1;
 $ipListServer = array_unique($ipListServer);
 foreach ($ipListServer as $key => $ipNya) {
@@ -233,7 +285,9 @@ foreach ($ipListServer as $key => $ipNya) {
 	$hit++;
 }
 
-echo color("yellow",$lang[10]." @".$argv[1]." : \r\n");
+echo "\n";
+
+echo color("yellow",$lang[10]." @".$argv[1]." : \r\n\n");
 
 $EmailFinder = new EmailFinder;
 $getMAil  	 = $EmailFinder->Domain($argv[1]);
@@ -242,10 +296,11 @@ foreach ($getMAil as $keys => $email) {
 	echo "    + ".color("green",$email)." \r\n"; 
 }
 
+echo "\n";
 
 $DomainTakeOver = new DomainTakeOver;
 
-echo color("yellow",$lang[11]."\r\n");
+echo color("yellow",$lang[11]."\r\n\n");
 $hit = 1;
 foreach ($DomainList as $keys => $domains) {
 	$DomainTakeOvers = $DomainTakeOver->Domain($domains);
@@ -255,8 +310,10 @@ foreach ($DomainList as $keys => $domains) {
 	}
 }
 
+echo "\n";
+
 $TechDetected = new TechDetected;
-echo color("yellow",$lang[12]."\r\n");
+echo color("yellow",$lang[12]."\r\n\n");
 $hit = 1;
 foreach ($DomainList as $keys => $domains) {
 	echo "    [".($hit)."/".count($DomainList)."] ".color("green",$domains)." \r\n"; 
