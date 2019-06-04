@@ -4,14 +4,14 @@ require_once("sdata-modules.php");
  * @Author: Nokia 1337
  * @Date:   2019-06-01 09:58:00
  * @Last Modified by:   Nokia 1337
- * @Last Modified time: 2019-06-05 02:48:39
+ * @Last Modified time: 2019-06-05 03:13:29
 */
 class Recsech
 {
 	function __construct()
 	{
 		$this->sdata  	= new Sdata;
-		$this->version 	= '1.6';
+		$this->version 	= '1.6.0';
 	}
 	function Required(){
 		echo color("yellow", "[+] Check required : \r\n");
@@ -29,7 +29,7 @@ class Recsech
 		$respons 	= $this->sdata->sdata($url,$head);unset($url);unset($head);
 		foreach ($respons as $key => $value) {
 			$json = json_decode($value['respons'],true);
-			if($this->version < $json['tag_name']){
+			if( $this->version < $json['tag_name']){
 				echo color("yellow", "[+] ").color("red", "You are using the old version (".$this->version.") , update it to version ".$json['tag_name']."\r\n\n");
 				echo color("nevy", "    + Version Name  : ".color("green",$json['name']." [NEW]") )."\r\n";
 				echo color("nevy", "    + Author        : ".color("green",$json['author'][login]) )."\r\n";
