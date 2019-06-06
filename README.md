@@ -14,7 +14,7 @@ Recsech is a tool for doing `Footprinting and Reconnaissance` on the target web.
 [![undefined](https://img.shields.io/github/contributors/radenvodka/recsech.svg)](https://github.com/radenvodka/Recsech/graphs/contributors)
 
 [![asciicast](https://asciinema.org/a/Yv71F5OKtz4Ubg0YZt3Copm7L.svg)](https://asciinema.org/a/Yv71F5OKtz4Ubg0YZt3Copm7L)
-
+[![Stargazers over time](https://starchart.cc/radenvodka/Recsech.svg)](https://starchart.cc/radenvodka/Recsech)
 
 ## Features in tools
 
