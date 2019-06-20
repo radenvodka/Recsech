@@ -55,6 +55,32 @@ Preferably, you can download sqlmap by cloning the [Git](https://github.com/rade
 
     git clone --depth 1 https://github.com/radenvodka/Recsech.git Recsech
 
+##### Adding Recsech.php to PATH in Linux/Unix-like Systems
+
+Adding Recsech.php to PATH is useful for Linux users because it allows users to run the program without specifying the runtime environment
+or the absolute path to the program. This means we execute `Recsech.php` from anywhere in the terminal and the software will run.
+
+To do this, run the following in a terminal:
+```shell
+$ cd path/to/Recsech/
+$ chmod u+x Recsech.php
+$ export PATH="$PATH:$(pwd)"
+```
+
+This will allow us to run Recsech.php from anywhere on the system. In example:
+```shell
+$ pwd
+path/to/Recsech/
+$ cd $HOME && Recsech.php # executes successfully without specifying the interpreter or the absolute path
+```
+
+Note that this will _only_ last until you exit the current terminal session. To permanently store this change to your PATH,
+go to your `~/.bashrc` file (or any Shell .rc file) and add this line:
+`PATH="$PATH:path/to/Recsech/`
+
+Now run `source ~/.bashrc` and your changes are now permanent. Profit!
+
+To learn more about PATHs, read [this](https://opensource.com/article/17/6/set-path-linux) article from Opensource.com.
 
 ##### Recsech Environment Windows (Command Prompt Windows) 
 

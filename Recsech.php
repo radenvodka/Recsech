@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 /**
  * @Author: Eka Syahwan
