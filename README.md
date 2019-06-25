@@ -141,6 +141,10 @@ The following is a user guide that helps develop this tool :
 [![noraj!](https://img.shields.io/badge/Noraj-CONTRIBUTION-blue.svg)](https://github.com/Noraj)
 [![GitHub followers](https://img.shields.io/github/followers/Noraj.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/Noraj?tab=followers)
 
+[![noraj!](https://img.shields.io/badge/naltun-CONTRIBUTION-blue.svg)](https://github.com/naltun)
+[![GitHub followers](https://img.shields.io/github/followers/naltun.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/naltun?tab=followers)
+
+
 
 ##### Available in the OS
 
