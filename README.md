@@ -51,9 +51,13 @@ We need several requirements to use this tool to run smoothly.
 
 You can download the latest tarball by clicking [here](https://github.com/radenvodka/Recsech/tarball/master) or latest zipball by clicking  [here](https://github.com/radenvodka/Recsech/zipball/master).
 
-Preferably, you can download sqlmap by cloning the [Git](https://github.com/radenvodka/Recsech) repository:
+Preferably, you can download Recsech by cloning the [Git](https://github.com/radenvodka/Recsech) repository:
 
     git clone --depth 1 https://github.com/radenvodka/Recsech.git Recsech
+
+and install php 7 & php-curl
+
+    apt-get install php php-curl
 
 ##### Adding Recsech.php to PATH in Linux/Unix-like Systems
 
